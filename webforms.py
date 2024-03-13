@@ -11,7 +11,7 @@ from wtforms import StringField, SubmitField, SelectField
 #
 # variable names need to be identical to what they are in each html template file
 class SearchForm(FlaskForm):
-	searched = StringField("Searched")
+	#searched = StringField("Searched")
 	search_image = FileField("Search by Image")
 	#submit = SubmitField("Submit")
 

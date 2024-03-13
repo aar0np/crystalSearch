@@ -46,9 +46,11 @@ async def get_by_metadata(table_name, chakra, birth_month, zodiac_sign):
     if chakra != "--Chakra--":
         condition_chakra = {"chakra": {"$in": [chakra]}}
         conditions.append(condition_chakra)
+
     if birth_month != "--Birth Month--":
         condition_birth_month = {"birth_month": birth_month}
         conditions.append(condition_birth_month)
+
     if zodiac_sign != "--Zodiac Sign--":
         condition_zodiac_sign = {"zodiac_sign": zodiac_sign}
         conditions.append(condition_zodiac_sign)

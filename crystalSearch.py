@@ -29,19 +29,22 @@ def base():
 async def search():
     form = SearchForm()
 
-    if form.searched.data != "":
-        # execute vector search in Astra DB
-        #response = await get_car_by_text(form.searched.data)
-        return render_template("search.html", form=form, searched=None, search_image_file="noImage.png")
-    elif form.search_image.data != "":
-        search_image = form.search_image.data
-        search_image_file = search_image.filename
-        # save locally
-        search_image.save(os.path.join(basedir, INPUT_IMAGE_DIR, search_image_file))
-        # execute vector search in Astra DB
-        image_results = await get_crystal_by_image(search_image_file)
-        data_results = await get_crystal_by_id_list(image_results)
-        return render_template("search.html", images=image_results, data=data_results, search_image_file=search_image_file)
+    #if form.searched.data != "":
+    	 # (old text search code)
+    #    # execute vector search in Astra DB
+    #    #response = await get_car_by_text(form.searched.data)
+    #    return render_template("search.html", form=form, searched=None, search_image_file="noImage.png")
+    #elif form.search_image.data != "":
+    search_image = form.search_image.data
+    search_image_file = search_image.filename
+    print(search_image)
+    print(search_image_file)
+    # save locally
+    search_image.save(os.path.join(basedir, INPUT_IMAGE_DIR, search_image_file))
+    # execute vector search in Astra DB
+    image_results = await get_crystal_by_image(search_image_file)
+    data_results = await get_crystal_by_id_list(image_results)
+    return render_template("search.html", images=image_results, data=data_results, search_image_file=search_image_file)
 
 # create faceting function (left nav drop-downs)
 @app.route('/facet', methods=["POST"])
