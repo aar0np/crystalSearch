@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-info">
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li>
+                <a class="nav-item" href="/">
+                    <img src="{{ url_for('static', filename='web_images/crystalSearch.png')}}" height=50 class="image" />
+                </a>
+            </li>
+        </ul>
+    </div>
+    <form method="POST" action="{{ url_for('search') }}" class="d-flex" enctype = "multipart/form-data">
+        {{ form.hidden_tag() }}
+        <!--<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched"
+            data-toggle="tooltip" data-placement="bottom" title="Type a crystal description here">-->
+        <input type="file" name="search_image"
+            data-toggle="tooltip" data-placement="bottom" title="Upload a picture of a crystal">
+        <div data-toggle="tooltip" data-placement="bottom" title="Click 'Search' for both text and image searches">
+            <button class="btn btn-success" type="submit">Search</button>
+        </div>
+        <br/>
+    </form>
+</nav>

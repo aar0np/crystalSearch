@@ -1,0 +1,4 @@
+Flask==2.3.2
+Flask-WTF==1.2.1
+sentence-transformers==2.2.2
+ragstack-ai==0.8.0
