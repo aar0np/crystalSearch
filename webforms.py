@@ -1,7 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField
 from wtforms import StringField, SubmitField, SelectField
-#from wtforms.validators import DataRequired
 
 #CHAKRA_CHOICES = [('1','--Chakra--'),('2','Crown'),('3','Third eye'),('4','Throat'),('5','Heart'),('6','Solar plexus'),('7','Sacral'),('8','Root')]
 #BIRTH_MONTH_CHOICES = [('1','--Birth Month--'),('2','January'),('3','February'),('4','March'),('5','April'),('6','May'),('7','June'),('8','July'),('9','August'),('10','September'),('11','October'),('12','November'),('13','December')]
@@ -11,12 +10,7 @@ from wtforms import StringField, SubmitField, SelectField
 #
 # variable names need to be identical to what they are in each html template file
 class SearchForm(FlaskForm):
-	#searched = StringField("Searched")
 	search_image = FileField("Search by Image")
-	#submit = SubmitField("Submit")
-
-## create a facet form
-#class FacetForm(FlaskForm):
 	chakra_select = SelectField("Chakra select")
 #	chakra_select = SelectField("Chakra select", choices=CHAKRA_CHOICES)
 	birth_month_select = SelectField("Birth Month select")

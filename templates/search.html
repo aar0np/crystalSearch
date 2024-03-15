@@ -2,13 +2,14 @@
 
 {% block content %}
 
+	<p><b>Searched by:</b></p>
 	<p>{{ searched }}</p>
 	<img src="{{ url_for('static', filename='input_images/' + search_image_file) }}" class="image" width=100>
 
 	<hr/>
+
 	<p><b>Possible matches:</b></p>
 	{%for image in images%}
-	
 		<p>
 			{{data[image].name}}<br>
 			<img src="{{ url_for('static', filename='images/' + image) }}" class="image" height=200>

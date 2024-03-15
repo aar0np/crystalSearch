@@ -37,8 +37,8 @@ async def search():
     #elif form.search_image.data != "":
     search_image = form.search_image.data
     search_image_file = search_image.filename
-    print(search_image)
-    print(search_image_file)
+    #print(search_image)
+    #print(search_image_file)
     # save locally
     search_image.save(os.path.join(basedir, INPUT_IMAGE_DIR, search_image_file))
     # execute vector search in Astra DB
@@ -61,6 +61,6 @@ async def facet():
 	#print(f"zodiac_sign={zodiac_sign}")
 
 	data_results = await get_crystals_by_facets(chakra, birth_month, zodiac_sign)
-	print(f"data_results={data_results}")
+	#print(f"data_results={data_results}")
 
 	return render_template("facet.html", data=data_results, chakra=chakra, birth_month=birth_month, zodiac_sign=zodiac_sign)

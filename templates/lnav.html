@@ -1,50 +1,41 @@
 <form method="POST" action="{{ url_for('facet') }}" enctype = "multipart/form-data">
   {{ form.hidden_tag() }}
+
   <ul class="nav flex-column">
     <li class="nav-item">
       <select name="chakra_select" class="Input">
             <option value="--Chakra--">--Chakra--</option>
-            <option value="Crown">Crown</option>
-            <option value="Third eye">Third Eye</option>
-            <option value="Throat">Throat</option>
-            <option value="Heart">Heart</option>
-            <option value="Solar plexus">Solar Plexus</option>
-            <option value="Sacral">Sacral</option>
-            <option value="Root">Root</option>
+            {% for choice in ['Crown','Third Eye','Throat','Heart','Solar plexus','Sacral','Root'] %}
+                {% if choice == chakra %}
+                    <option value="{{choice}}" selected>{{choice}}</option>
+                {% else %}
+                    <option value="{{choice}}">{{choice}}</option>
+                {% endif %}
+            {% endfor %}
       </select>
     </li>
     <li class="nav-item">
       <select name="birth_month_select" class="Input">
             <option value="--Birth Month--">--Birth Month--</option>
-            <option value="January">January</option>
-            <option value="February">February</option>
-            <option value="March">March</option>
-            <option value="April">April</option>
-            <option value="May">May</option>
-            <option value="June">June</option>
-            <option value="July">July</option>
-            <option value="August">August</option>
-            <option value="September">September</option>
-            <option value="October">October</option>
-            <option value="November">November</option>
-            <option value="December">December</option>
+            {% for choice in ['January','February','March','April','May','June','July','August','September','October','November','December'] %}
+                {% if choice == birth_month %}
+                    <option value="{{choice}}" selected>{{choice}}</option>
+                {% else %}
+                    <option value="{{choice}}">{{choice}}</option>
+                {% endif %}
+            {% endfor %}
       </select>
     </li>
     <li class="nav-item">
       <select name="zodiac_select" class="Input">
             <option value="--Zodiac Sign--">--Zodiac Sign--</option>
-            <option value="Aires">Aires</option>
-            <option value="Taurus">Taurus</option>
-            <option value="Gemini">Gemini</option>
-            <option value="Cancer">Cancer</option>
-            <option value="Leo">Leo</option>
-            <option value="Virgo">Virgo</option>
-            <option value="Libra">Libra</option>
-            <option value="Scorpio">Scorpio</option>
-            <option value="Sagitarius">Sagitarius</option>
-            <option value="Capricorn">Capricorn</option>
-            <option value="Aquarius">Aquarius</option>
-            <option value="Pisces">Pisces</option>
+            {% for choice in ['Aires','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagitarius','Capricorn','Aquarius','Pisces'] %}
+                {% if choice == zodiac_sign %}
+                    <option value="{{choice}}" selected>{{choice}}</option>
+                {% else %}
+                    <option value="{{choice}}">{{choice}}</option>
+                {% endif %}
+            {% endfor %}
       </select>
     </li>
   </ul>
