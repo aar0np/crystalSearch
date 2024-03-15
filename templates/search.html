@@ -10,11 +10,38 @@
 
 	<p><b>Possible matches:</b></p>
 	{%for image in images%}
-		<p>
-			{{data[image].name}}<br>
-			<img src="{{ url_for('static', filename='images/' + image) }}" class="image" height=200>
-		</p>
-
+		<hr/>
+			<h3><i>{{data[image].name}}</i></h3>
+			<div style="float: left; margin: 10px;">
+				<img src="{{ url_for('static', filename='images/' + image) }}" class="image" height=200>
+			</div>
+			<table class="table table-bordered" style="width: 35%; margin: 20px;">
+				<colgroup>
+					<col span=1 style="width: 15%; background-color: #DDD;">
+					<col span=1 style="width: 20%;">
+				</colgroup>
+				<tbody>
+					<tr>
+						<td>Chakras</td><td>{{data[image].chakra}}</td>
+					</tr>
+					<tr>
+						<td>Birth Month</td><td>{{data[image].birth_month}}</td>
+					</tr>
+					<tr>
+						<td>Zodiac Sign</td><td>{{data[image].zodiac_sign}}</td>
+					</tr>
+					<tr>
+						<td>Mohs Hardness</td>
+						<td>
+							{%if data[image].maximum_mohs_hardness == data[image].minimum_mohs_hardness%}
+								{{data[image].maximum_mohs_hardness}}
+							{%else%}
+								{{data[image].minimum_mohs_hardness}}-{{data[image].maximum_mohs_hardness}}
+							{%endif%}
+						</td>
+					</tr>
+				</tbody>
+			</table>
 	{%endfor%}
 
 {% endblock %}
