@@ -4,33 +4,37 @@
 
 	<p><b>Search Criteria:</b>
 		{%if chakra != "--Chakra--"%}
-			Chakra = {{chakra}}&nbsp;
+			Chakra = "{{chakra}}"&nbsp;
 		{%endif%}
 		{%if birth_month != "--Birth Month--"%}
-			Birth Month = {{birth_month}}&nbsp;
+			Birth Month = "{{birth_month}}"&nbsp;
 		{%endif%}
 		{%if zodiac_sign != "--Zodiac Sign--"%}
-			Zodiac Sign = {{zodiac_sign}}&nbsp;
+			Zodiac Sign = "{{zodiac_sign}}"&nbsp;
 		{%endif%}
 		<br/><br/>
-		<b>Matching crystals:</b>
 	</p>
 	
-	{%for id, crystal in data.items()%}
+	{% if data.items()|count > 0 %}
+		<b>Matching crystals:</b>
+		{%for id, crystal in data.items()%}
 	
-		<p>
-			{{crystal.name}}<br/>
-			<img src="{{ url_for('static', filename='images/' + id) }}" class="image" height=200>
-			Chakras: {{crystal.chakra}}<br/>
-			Birth Month: {{crystal.birth_month}}<br/>
-			Zodiac Sign: {{crystal.zodiac_sign}}<br/>
-			{%if crystal.maximum_mohs_hardness == crystal.minimum_mohs_hardness%}
-				Mohs Hardness: {{crystal.maximum_mohs_hardness}}
-			{%else%}
-				Mohs Hardness: {{crystal.minimum_mohs_hardness}}-{{crystal.maximum_mohs_hardness}}
-			{%endif%}
-		</p>
+			<p>
+				{{crystal.name}}<br/>
+				<img src="{{ url_for('static', filename='images/' + id) }}" class="image" height=200>
+				Chakras: {{crystal.chakra}}<br/>
+				Birth Month: {{crystal.birth_month}}<br/>
+				Zodiac Sign: {{crystal.zodiac_sign}}<br/>
+				{%if crystal.maximum_mohs_hardness == crystal.minimum_mohs_hardness%}
+					Mohs Hardness: {{crystal.maximum_mohs_hardness}}
+				{%else%}
+					Mohs Hardness: {{crystal.minimum_mohs_hardness}}-{{crystal.maximum_mohs_hardness}}
+				{%endif%}
+			</p>
 
-	{%endfor%}
+		{%endfor%}
+	{% else %}
+		<b>Sorry, no matches found.</b>
+	{% endif %}
 
 {% endblock %}

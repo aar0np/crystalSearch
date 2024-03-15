@@ -41,11 +41,12 @@ async def get_crystal_by_id_list(id_list):
 async def get_crystals_by_facets(chakra, birth_month, zodiac_sign):
 	results = {}
 	crystals_data = await get_by_metadata(DATA_COLLECTION_NAME, chakra, birth_month, zodiac_sign)
-	#print(crystals_data['data'])
-	for crystal in crystals_data['data']['documents']:
-		#print(crystal)
-		id = crystal['_id']
-		results[id] = parse_crystal_data(crystal['text'])
+
+	if crystals_data is not None:
+		for crystal in crystals_data['data']['documents']:
+			#print(crystal)
+			id = crystal['_id']
+			results[id] = parse_crystal_data(crystal['text'])
 
 	return results
 
