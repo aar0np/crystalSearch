@@ -9,39 +9,42 @@
 	<hr/>
 
 	<p><b>Possible matches:</b></p>
-	{%for image in images%}
+	<!-- crystal results -->
+	{%for id, crystal in data.items()%}
 		<hr/>
-			<h3><i>{{data[image].name}}</i></h3>
-			<div style="float: left; margin: 10px;">
-				<img src="{{ url_for('static', filename='images/' + image) }}" class="image" height=200>
-			</div>
-			<table class="table table-bordered" style="width: 35%; margin: 20px;">
-				<colgroup>
-					<col span=1 style="width: 15%; background-color: #DDD;">
-					<col span=1 style="width: 20%;">
-				</colgroup>
-				<tbody>
-					<tr>
-						<td>Chakras</td><td>{{data[image].chakra}}</td>
-					</tr>
-					<tr>
-						<td>Birth Month</td><td>{{data[image].birth_month}}</td>
-					</tr>
-					<tr>
-						<td>Zodiac Sign</td><td>{{data[image].zodiac_sign}}</td>
-					</tr>
-					<tr>
-						<td>Mohs Hardness</td>
-						<td>
-							{%if data[image].maximum_mohs_hardness == data[image].minimum_mohs_hardness%}
-								{{data[image].maximum_mohs_hardness}}
-							{%else%}
-								{{data[image].minimum_mohs_hardness}}-{{data[image].maximum_mohs_hardness}}
-							{%endif%}
-						</td>
-					</tr>
-				</tbody>
-			</table>
+		<h3><i>{{crystal.name}}</i></h3>
+		<div style="float: left; margin: 10px;">
+			<img src="{{ url_for('static', filename='images/' + id) }}" class="img-responsive" height=200>
+		</div>
+		<table class="table table-bordered" style="width: 35%; margin: 20px;">
+			<colgroup>
+				<col span=1 style="width: 15%; background-color: #DDD;">
+				<col span=1 style="width: 20%;">
+			</colgroup>
+			<tbody>
+				<tr>
+					<td>Chakras</td><td>{{crystal.chakra}}</td>
+				</tr>
+				<tr>
+					<td>Birth Month</td><td>{{crystal.birth_month}}</td>
+				</tr>
+				<tr>
+					<td>Zodiac Sign</td><td>{{crystal.zodiac_sign}}</td>
+				</tr>
+				<tr>
+					<td>Mohs Hardness</td>
+					<td>
+						{%if crystal.maximum_mohs_hardness == crystal.minimum_mohs_hardness%}
+							{{crystal.maximum_mohs_hardness}}
+						{%else%}
+							{{crystal.minimum_mohs_hardness}}-{{crystal.maximum_mohs_hardness}}
+						{%endif%}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br/>
+
 	{%endfor%}
 
 {% endblock %}

@@ -8,9 +8,6 @@ from wtforms import StringField, SubmitField, SelectField
 class SearchForm(FlaskForm):
 	search_image = FileField("Search by Image")
 	chakra_select = SelectField("Chakra select")
-#	chakra_select = SelectField("Chakra select", choices=CHAKRA_CHOICES)
 	birth_month_select = SelectField("Birth Month select")
-#	birth_month_select = SelectField("Birth Month select", choices=BIRTH_MONTH_CHOICES)
 	zodiac_select = SelectField("Zodiac select")
-#	zodiac_select = SelectField("Zodiac select", choices=ZODIAC_CHOICES)
 	submit = SubmitField("Submit")

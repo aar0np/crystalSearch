@@ -25,7 +25,7 @@ def init_collection(table_name):
 async def get_by_vector(table_name, vector_embedding, limit=1):
     init_collection(table_name)
 
-    results = collection.vector_find(vector_embedding.tolist(), limit=limit, fields={"text","$vector"})
+    results = collection.vector_find(vector_embedding.tolist(), limit=limit, fields={"text","chakra","birth_month","zodiac_sign","$vector"})
     return results
 
 async def get_by_id(table_name, id):
@@ -38,10 +38,6 @@ async def get_by_metadata(table_name, chakra, birth_month, zodiac_sign):
     init_collection(table_name)
 
     conditions = []
-
-    print(chakra)
-    print(birth_month)
-    print(zodiac_sign)
 
     if chakra != "--Chakra--":
         condition_chakra = {"chakra": {"$in": [chakra]}}

@@ -1,10 +1,10 @@
-<div style="float: left; margin: 10px;">
+<div style="float: left; margin-top: 10px; margin-right: 20px; margin-left: 10px;">
     <form method="POST" action="{{ url_for('facet') }}" enctype = "multipart/form-data">
       {{ form.hidden_tag() }}
 
         <ul class="nav flex-column">
             <li class="nav-item">
-              <select name="chakra_select" class="form-control">
+              <select name="chakra_select" class="form-control btn-success">
                     <option value="--Chakra--">--Chakra--</option>
                     {% for choice in ['Crown','Third Eye','Throat','Heart','Solar plexus','Sacral','Root'] %}
                         {% if choice == chakra %}
@@ -15,8 +15,9 @@
                     {% endfor %}
               </select>
             </li>
+            <br/>
             <li class="nav-item">
-              <select name="birth_month_select" class="form-control">
+              <select name="birth_month_select" class="form-control btn-info">
                     <option value="--Birth Month--">--Birth Month--</option>
                     {% for choice in ['January','February','March','April','May','June','July','August','September','October','November','December'] %}
                         {% if choice == birth_month %}
@@ -27,8 +28,9 @@
                     {% endfor %}
               </select>
             </li>
+            <br/>
             <li class="nav-item">
-              <select name="zodiac_select" class="form-control">
+              <select name="zodiac_select" class="form-control btn-warning">
                     <option value="--Zodiac Sign--">--Zodiac Sign--</option>
                     {% for choice in ['Aires','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagitarius','Capricorn','Aquarius','Pisces'] %}
                         {% if choice == zodiac_sign %}
@@ -40,6 +42,7 @@
               </select>
             </li>
         </ul>
-        <button type="submit" class="btn btn-success">Find Crystals</button>
+        <br/>
+        <button type="submit" class="btn btn-primary">Find Crystals</button>
     </form>
 </div>
