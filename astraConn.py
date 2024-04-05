@@ -22,20 +22,20 @@ def init_collection(table_name):
     
     collection = db.collection(table_name)
 
-async def get_by_vector(table_name, vector_embedding, limit=1):
-    init_collection(table_name)
+async def get_by_vector(collection_name, vector_embedding, limit=1):
+    init_collection(collection_name)
 
     results = collection.vector_find(vector_embedding.tolist(), limit=limit, fields={"text","chakra","birth_month","zodiac_sign","$vector"})
     return results
 
-async def get_by_id(table_name, id):
-    init_collection(table_name)
+async def get_by_id(collection_name, id):
+    init_collection(collection_name)
 
     result = collection.find_one(filter={"_id": id})
     return result
 
-async def get_by_metadata(table_name, chakra, birth_month, zodiac_sign):
-    init_collection(table_name)
+async def get_by_dropdowns(collection_name, chakra, birth_month, zodiac_sign):
+    init_collection(collection_name)
 
     conditions = []
 

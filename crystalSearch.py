@@ -1,6 +1,6 @@
 import os
 
-from crystalServices import get_crystal_by_image
+from crystalServices import get_crystals_by_image
 from crystalServices import get_crystals_by_facets
 from flask import Flask, render_template
 from webforms import SearchForm
@@ -33,7 +33,7 @@ async def search():
     search_image.save(os.path.join(basedir, INPUT_IMAGE_DIR, search_image_file))
 
     # execute vector search in Astra DB
-    image_results = await get_crystal_by_image(search_image_file)
+    image_results = await get_crystals_by_image(search_image_file)
 
     return render_template("search.html", data=image_results, search_image_file=search_image_file)
 

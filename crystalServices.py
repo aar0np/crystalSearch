@@ -3,7 +3,7 @@ import os
 
 from astraConn import get_by_vector
 from astraConn import get_by_id
-from astraConn import get_by_metadata
+from astraConn import get_by_dropdowns
 from sentence_transformers import SentenceTransformer
 from PIL import Image
 
@@ -11,7 +11,7 @@ INPUT_IMAGE_DIR = "static/input_images/"
 DATA_COLLECTION_NAME = "crystal_data"
 model = None
 
-async def get_crystal_by_image(file_path):
+async def get_crystals_by_image(file_path):
 	global model
 
 	if model is None:
@@ -34,7 +34,7 @@ async def get_crystal_by_image(file_path):
 
 async def get_crystals_by_facets(chakra, birth_month, zodiac_sign):
 	results = {}
-	crystal_data = await get_by_metadata(DATA_COLLECTION_NAME, chakra, birth_month, zodiac_sign)
+	crystal_data = await get_by_dropdowns(DATA_COLLECTION_NAME, chakra, birth_month, zodiac_sign)
 
 	if crystal_data is not None:
 		for crystal in crystal_data['data']['documents']:

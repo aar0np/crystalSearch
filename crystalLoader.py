@@ -67,6 +67,6 @@ with open(CSV) as csvHandler:
             text = (f"gemstone: {gemstone}| alternate name: {alt_name}| physical attributes: {phys_attributes}| emotional attributes: {emot_attributes}| metaphysical attributes: {meta_attributes}| origin: {origin}| maximum mohs hardness: {mohs_max_hardness}| minimum mohs hardness: {mohs_min_hardness}")
 
             img_emb = model.encode(Image.open(IMAGE_DIR + image))
-            strJson = '{"_id":"' + image + '","text":"' + text + '","chakra":["' + chakras + '"],"birth_month":"' + birth_month + '","zodiac_sign":"' + zodiac_sign + '","$vector":' + str(img_emb.tolist()) + '}'
+            strJson = (f'{{"_id":"{image}","text":"{text}","chakra":["{chakras}"],"birth_month":"{birth_month}","zodiac_sign":"{zodiac_sign}","$vector":{str(img_emb.tolist())}}}')
             doc = json.loads(strJson)
             col.insert_one(doc)
