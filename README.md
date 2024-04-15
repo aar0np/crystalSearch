@@ -13,7 +13,7 @@ An MVC-patterned Python application which works on vectorized image data written
 export ASTRA_DB_APPLICATION_TOKEN=AstraCS:GgsdfSnotrealHqKZw:SDGSDDSG6a36d8526BLAHBLAHBLAHc18d40
 export ASTRA_DB_API_ENDPOINT=https://b9aff773-also-not-real-d3088ea14425-us-east1.apps.astra.datastax.com
 export FLASK_ENV=development
-export FLASK_APP=carSearch
+export FLASK_APP=crystalSearch
 ```
 
 You can use a `.env` file for the vars as well.
@@ -30,30 +30,22 @@ pip install -r requirements.txt
 
 Descriptions and examples for each Python file in the project.
 
-#### crystalImageLoader.py
+#### crystalLoader.py
 
- - Creates a new collection named car_images using astrapy.
- - Cycles through all files in the `static/images/` directory.
- - Generates embeddings for each image file.
- - Stores vector embeddings and metadata in Astra DB.
-
-#### crystalDataLoader.py
-
- - Creates a new collection named car_images using astrapy.
+ - Creates a new collection named `crystal_data`.
  - Generates embeddings for each image file.
  - Stores vector embeddings and metadata in Astra DB.
 
 Usage:
 
 ```
-python3 crystalDataLoader.py
-python3 crystalImageLoader.py
+python3 crystalLoader.py
 ```
 
-### carSearch.py
+### crystalSearch.py
 
  - Builds a small web frontend for the application (View).
- - Acts as the main program for the application
+ - Acts as the main program for the application.
 
 Usage:
 
@@ -64,7 +56,7 @@ flask run -p 8000
 Terminal output:
 
 ```
- * Serving Flask app 'carSearch'
+ * Serving Flask app 'crystalSearch'
  * Debug mode: off
 WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
  * Running on http://127.0.0.1:8000
@@ -73,8 +65,8 @@ Press CTRL+C to quit
 
 If you navigate in your browser to [http://127.0.0.1:8000](http://127.0.0.1:8000), you may search in one of two ways:
 
- - By text string
- - By image (click on the "Search" button after selecting the image)
+ - By the dropdowns in the left navigation.
+ - By image (click on the "Search" button after selecting the image).
 
 ### config.py
 
@@ -85,9 +77,9 @@ If you navigate in your browser to [http://127.0.0.1:8000](http://127.0.0.1:8000
  - A logical way to separate the web forms definitions from the main code.
  - Contains the `SearchForm`.
 
-### carServices.py
+### crystalServices.py
 
- - Serves the `get_car_by_text` method (Controller).
+ - Serves the `get_crystals_by_image` and the `get_crystals_by_facets` methods (Controller).
  - Handles all interactions with the `clip-ViT-B-32` sentence transformer.
 
 ### astraConn.py
